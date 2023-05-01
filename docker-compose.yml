@@ -1,0 +1,10 @@
+﻿services:
+  quartzclusteringpoc:
+    image: quartzclusteringpoc
+    build:
+      context: .
+      dockerfile: QuartzClusteringPoC/Dockerfile
+    ports:
+      - 5001-5003
+    deploy:
+      replicas: 3
