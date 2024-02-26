@@ -1,10 +1,46 @@
 ﻿services:
-  quartzclusteringpoc:
+  quartzclusteringpoc-1:
     image: quartzclusteringpoc
     build:
       context: .
-      dockerfile: QuartzClusteringPoC/Dockerfile
+      dockerfile: Dockerfile
     ports:
-      - 5001-5003
-    deploy:
-      replicas: 3
+      - 5001:8080
+    depends_on:
+      - postgres
+      
+  quartzclusteringpoc-2:
+    image: quartzclusteringpoc
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 5002:8080
+    depends_on:
+      - postgres
+  
+  quartzclusteringpoc-3:
+    image: quartzclusteringpoc
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 5003:8080
+    depends_on:
+      - postgres
+      
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /var/lib/postgresql/data/pgdata
+      PGPORT: 5433
+    ports:
+      - "5433:5433"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  
+volumes:
+  pgdata:

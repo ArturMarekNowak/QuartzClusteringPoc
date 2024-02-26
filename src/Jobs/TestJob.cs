@@ -1,7 +1,4 @@
-﻿using System;
-using System.Runtime.InteropServices.ComTypes;
-using System.Threading.Tasks;
-using Quartz;
+﻿using Quartz;
 
 namespace QuartzClusteringPoC.Jobs;
 

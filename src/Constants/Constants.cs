@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace QuartzClusteringPoC.Constants;
+﻿namespace QuartzClusteringPoC.Constants;
 
 public static class Constants
 {
